@@ -33,8 +33,19 @@ io.on("connection", (socket) => {
     })
 
     socket.on("CURSOR_POSITION_CHANGED", (data) => {
-        console.log(socket.id, data);
         socket.broadcast.emit("CHANGE_CURSOR_POSITION", { userId: socket.id, position: data });
+    })
+
+    socket.on('MOUSE_MOVE', (data) => {
+        socket.broadcast.emit('MOUSE_MOVE', { userId: socket.id, position: data });
+    })
+
+    socket.on('MOUSE_LEAVE', () => {
+        socket.broadcast.emit('MOUSE_LEAVE', { userId: socket.id });
+    })
+
+    socket.on('MOUSE_ENTER', () => {
+        socket.broadcast.emit('MOUSE_ENTER', { userId: socket.id });
     })
 });
 
