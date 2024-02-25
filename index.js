@@ -3,7 +3,7 @@ const cors = require("cors");
 const { createServer } = require("http");
 const { Server } = require("socket.io");
 const { log } = require("console");
-require("dotenv").config('./.env');
+require("dotenv").config();
 
 const app = express();
 let origin = "http://localhost:5173";
